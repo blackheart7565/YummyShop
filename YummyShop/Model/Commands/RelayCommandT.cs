@@ -19,8 +19,7 @@ namespace YummyShop.Model.Commands {
             add => CommandManager.RequerySuggested += value;
             remove => CommandManager.RequerySuggested -= value;
         }
-
-
+        
         public bool CanExecute(object? parameter) {
             return parameter != null && (_canExecuteAction?.Invoke((T)parameter) ?? true);
         }
