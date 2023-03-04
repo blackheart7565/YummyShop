@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using System.Windows;
+using System.Windows.Forms;
 using YummyShop.Model.Base;
 using YummyShop.Model.Commands;
 using YummyShop.Model.Data;
@@ -12,6 +14,20 @@ namespace YummyShop.ViewModel.MainWindowFolder {
         private RelayCommandT<Window>? _windowMinimizateCommand;
         private RelayCommandT<Window>? _windowCloseCommand;
         private RelayCommandT<Window>? _buttonWindowRegisterCommand;
+        
+        private RelayCommand? _inputImageCommand;
+
+        private byte[]? _imageByte;
+
+        #region Property
+
+        public byte[]? ImageByte
+        {
+            get => _imageByte;
+            set => SetField(ref _imageByte, value, nameof(ImageByte));
+        }
+
+        #endregion
 
         #region All Command
 
@@ -43,7 +59,7 @@ namespace YummyShop.ViewModel.MainWindowFolder {
                     RegistrationWindow win = ((RegistrationWindow)sender);
                     using (ApplicationContextDB contextDb = new ApplicationContextDB()) {
                         contextDb.Users.Add(new Users() {
-
+                            Image = ImageByte,
                             FirstName = win.TextBoxFirstName.Text,
                             LastName = win.TextBoxLastName.Text,
                             Username = win.TextBoxUsername.Text,
@@ -53,6 +69,25 @@ namespace YummyShop.ViewModel.MainWindowFolder {
                         });
                         contextDb.SaveChanges();
                     };
+                });
+            }
+        }
+        /// <summary>
+        /// Загрузка картинки в БД
+        /// </summary>
+        public RelayCommand? InputImageCommand {
+            get {
+                return _inputImageCommand ??= new RelayCommand(sender =>
+                {
+                    using (OpenFileDialog fileDialog = new OpenFileDialog()) {
+                        if (fileDialog.ShowDialog() == DialogResult.OK) {
+                            using (FileStream fileStream = new FileStream(fileDialog.FileName, FileMode.Open, FileAccess.Read)) {
+                                using (BinaryReader binaryReader = new BinaryReader(fileStream)) {
+                                    ImageByte = binaryReader.ReadBytes((int)fileStream.Length);
+                                }
+                            }
+                        }
+                    }
                 });
             }
         }

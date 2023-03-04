@@ -1,18 +1,21 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
-using Microsoft.EntityFrameworkCore;
 using YummyShop.Model.Commands;
 using YummyShop.Model.Data;
 using YummyShop.View;
 
 namespace YummyShop.ViewModel.MainWindowFolder {
-    public class MainNavigationWindow {
+    public class MainAuthorizationWindow {
         private RelayCommandT<Window>? _moveWindowCommand;
         private RelayCommandT<Window>? _windowMinimizateCommand;
-        private RelayCommand? _windowCloseCommand;
         public RelayCommandT<Window>? _showRegistrationInfoWindowCommand;
         private RelayCommandT<Window>? _authorizationAccountCommand;
+
+        private RelayCommand? _windowCloseCommand;
 
         #region All Commands
 
@@ -54,33 +57,34 @@ namespace YummyShop.ViewModel.MainWindowFolder {
         public RelayCommandT<Window>? AuthorizationAccountCommand {
             get {
                 return _authorizationAccountCommand ??= new RelayCommandT<Window>(sender => {
-                    try
-                    {
+                    try {
                         AuthorizationWindow win = ((AuthorizationWindow)sender);
                         var contextDb = new ApplicationContextDB();
 
-                        bool isLoginAccount = contextDb.Users.Any(x => win.TextBoxLoginUsername.Text == x.Username &&
-                                                                            win.TextBoxLoginPassword.Password == x.Password ||
-                                                                            win.TextBoxLoginUsername.Text == x.Email &&
-                                                                            win.TextBoxLoginPassword.Password == x.Password);
-                        if (isLoginAccount)
-                        {
+                        string username = win.TextBoxLoginUsername.Text;
+                        string password = win.TextBoxLoginPassword.Password;
+
+                        // SQL_Latin1_General_CP1_CS_AS - Учитывает регистп Базы Данных
+                        bool isLoginAccount = contextDb.Users.Any(x => EF.Functions.Collate(x.Username, "SQL_Latin1_General_CP1_CS_AS") == username &&
+                                                                       EF.Functions.Collate(x.Password, "SQL_Latin1_General_CP1_CS_AS") == password ||
+                                                                       EF.Functions.Collate(x.Email, "SQL_Latin1_General_CP1_CS_AS") == username &&
+                                                                       EF.Functions.Collate(x.Password, "SQL_Latin1_General_CP1_CS_AS") == password);
+                        if (isLoginAccount) {
                             win.TextBoxLoginUsername.Text = "";
                             win.TextBoxLoginPassword.Password = "";
                             YummyShopWindow winShop = new();
                             win.Hide();
                             winShop.ShowDialog();
                             win.Show();
-                        }else
-                        {
+                        }
+                        else {
                             MessageBox.Show("Такого аккаунта не существует!\nПроверьте правильно ли указаные данные",
-                                "Ошибка", 
-                                MessageBoxButton.OK, 
+                                "Ошибка",
+                                MessageBoxButton.OK,
                                 MessageBoxImage.Error);
                         }
                     }
-                    catch (Exception ex)
-                    {
+                    catch (Exception ex) {
                         MessageBox.Show(ex.Message);
                     }
                 });

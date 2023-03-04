@@ -9,16 +9,16 @@
         mc:Ignorable="d"
         Title="AuthorizationWindow"
         Name="AuthorizationWindowName"
-        Height="500"
+        Height="600"
         Width="800"
-        MaxHeight="500"
+        MaxHeight="600"
         MaxWidth="800"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Style="{StaticResource MainWindowStyles}">
 
     <Window.DataContext>
-        <viewModel:MainNavigationWindow />
+        <viewModel:MainAuthorizationWindow />
     </Window.DataContext>
 
     <Border Background="{StaticResource GradientBrush11}"
@@ -36,6 +36,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="40" />
+                <RowDefinition Height="80" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
@@ -66,7 +67,21 @@
 
             </Grid>
 
-            <Grid Grid.Row="1">
+            <StackPanel Grid.Row="1"
+                        Orientation="Horizontal"
+                        VerticalAlignment="Center">
+                <Image Margin="10,0,0,0"
+                       Source="Resources/Image/authorizationIcon.png" />
+                <TextBlock Text="Авторизация"
+                           FontSize="45"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource GradientBrush12}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Margin="30,0,0,0" />
+            </StackPanel>
+
+            <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />

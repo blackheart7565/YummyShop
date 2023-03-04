@@ -1,5 +1,4 @@
-﻿using Accessibility;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using YummyShop.Model.DataBaseTableModel;
 
 namespace YummyShop.Model.Data {
@@ -8,7 +7,7 @@ namespace YummyShop.Model.Data {
     /// </summary>
 
     public class ApplicationContextDB : DbContext {
-
+        
         public DbSet<Users> Users { get; set; }
 
         public ApplicationContextDB() {

@@ -11,8 +11,8 @@ using YummyShop.Model.Data;
 namespace YummyShop.Migrations
 {
     [DbContext(typeof(ApplicationContextDB))]
-    [Migration("20230302200745_Initial")]
-    partial class Initial
+    [Migration("20230304210048_InitialContextDB")]
+    partial class InitialContextDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,6 +37,9 @@ namespace YummyShop.Migrations
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("Image")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
