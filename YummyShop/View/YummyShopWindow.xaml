@@ -1,0 +1,20 @@
+﻿<Window x:Class="YummyShop.View.YummyShopWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YummyShop.View"
+        mc:Ignorable="d"
+        Title="YummyShopWindow"
+        Height="450"
+        Width="800"
+        Background="{StaticResource GradientBrush3}">
+    <Grid>
+        <TextBlock Text="Y u m m y  S h o p  W i n d ow"
+                   FontSize="50"
+                   FontWeight="Bold"
+                   Foreground="{StaticResource GradientBrush13}"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center" />
+    </Grid>
+</Window>

@@ -15,7 +15,7 @@
         <Setter Property="BorderThickness"
                 Value="0,0,0,1.5" />
         <Setter Property="Foreground"
-                Value="Black" />
+                Value="{StaticResource ColorBrush72}" />
         <Setter Property="FontSize"
                 Value="15" />
         <Setter Property="FontWeight"
@@ -42,7 +42,7 @@
         <Setter Property="BorderThickness"
                 Value="0,0,0,1.5" />
         <Setter Property="Foreground"
-                Value="Black" />
+                Value="{StaticResource ColorBrush72}" />
         <Setter Property="FontSize"
                 Value="15" />
         <Setter Property="FontWeight"

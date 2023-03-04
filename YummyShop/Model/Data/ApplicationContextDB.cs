@@ -9,7 +9,7 @@ namespace YummyShop.Model.Data {
 
     public class ApplicationContextDB : DbContext {
 
-        DbSet<Users> Users { get; set; }
+        public DbSet<Users> Users { get; set; }
 
         public ApplicationContextDB() {
             Database.EnsureCreated();

@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="View\Resources\Image\logo_1.jpg" />
+    <None Remove="View\Resources\Image\registrationIcon.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +25,9 @@
 
   <ItemGroup>
     <Resource Include="View\Resources\Image\logo_1.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resources\Image\registrationIcon.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
