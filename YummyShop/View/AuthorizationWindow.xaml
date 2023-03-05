@@ -21,10 +21,12 @@
         <viewModel:MainAuthorizationWindow />
     </Window.DataContext>
 
-    <Border Background="{StaticResource GradientBrush11}"
-            CornerRadius="10"
+    <Border CornerRadius="10"
             BorderBrush="{StaticResource GradientBrush12}"
             BorderThickness="3">
+        <Border.Background>
+            <ImageBrush ImageSource="Resources/Image/background_2.jpg" />
+        </Border.Background>
 
         <bh:Interaction.Triggers>
             <bh:EventTrigger EventName="MouseLeftButtonDown">
@@ -96,9 +98,9 @@
                         <RowDefinition Height="100" />
                     </Grid.RowDefinitions>
 
-                    <Image Grid.Column="0"
-                           Source="Resources/Image/logo_1.jpg"
-                           Height="100" />
+                    <!--<Image Grid.Row="0"
+                           Source="Resources/Image/Logotype_1.png"
+                           Height="100" />-->
 
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
@@ -127,13 +129,13 @@
 
                     <StackPanel Grid.Row="2">
                         <Button Style="{StaticResource ButtonLoginStyles}"
-                                Content="Login" 
+                                Content="Login"
                                 Command="{Binding AuthorizationAccountCommand}"
-                                CommandParameter="{Binding ElementName=AuthorizationWindowName}"/>
+                                CommandParameter="{Binding ElementName=AuthorizationWindowName}" />
                         <Button Content="У вас немае аккаунта?"
                                 Style="{StaticResource ButtonRegistrationInfoStyles}"
                                 Command="{Binding ShowRegistrationInfoWindowCommand}"
-                                CommandParameter="{Binding ElementName=AuthorizationWindowName}"/>
+                                CommandParameter="{Binding ElementName=AuthorizationWindowName}" />
                     </StackPanel>
 
                 </Grid>

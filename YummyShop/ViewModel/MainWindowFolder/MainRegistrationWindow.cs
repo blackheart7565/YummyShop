@@ -68,6 +68,7 @@ namespace YummyShop.ViewModel.MainWindowFolder {
                             Phone = win.TextBoxPhone.Text,
                         });
                         contextDb.SaveChanges();
+                        win.Close();
                     };
                 });
             }

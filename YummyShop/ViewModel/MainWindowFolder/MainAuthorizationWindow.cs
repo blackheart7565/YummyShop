@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using YummyShop.Model.Commands;
 using YummyShop.Model.Data;
@@ -72,7 +70,7 @@ namespace YummyShop.ViewModel.MainWindowFolder {
                         if (isLoginAccount) {
                             win.TextBoxLoginUsername.Text = "";
                             win.TextBoxLoginPassword.Password = "";
-                            YummyShopWindow winShop = new();
+                            var winShop = new YummyShopWindow();
                             win.Hide();
                             winShop.ShowDialog();
                             win.Show();
@@ -92,6 +90,5 @@ namespace YummyShop.ViewModel.MainWindowFolder {
         }
 
         #endregion
-
     }
 }

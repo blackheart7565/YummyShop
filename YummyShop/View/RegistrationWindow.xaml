@@ -96,10 +96,12 @@
         <viewModel:MainRegistrationWindow />
     </Window.DataContext>
 
-    <Border Background="{StaticResource GradientBrush11}"
-            CornerRadius="10"
+    <Border CornerRadius="10"
             BorderBrush="{StaticResource GradientBrush12}"
             BorderThickness="3">
+        <Border.Background>
+            <ImageBrush ImageSource="Resources/Image/background_2.jpg"/>
+        </Border.Background>
 
         <bh:Interaction.Triggers>
             <bh:EventTrigger EventName="MouseLeftButtonDown">
