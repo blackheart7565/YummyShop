@@ -70,6 +70,7 @@
     <Color x:Key="Color65">#2B049A</Color>
     <Color x:Key="Color66">#1AB300</Color>
     <Color x:Key="Color67">#00FF00</Color>
+    <Color x:Key="Color68">#FFD700</Color>
     <Color x:Key="Color69">#42FF42</Color>
     <Color x:Key="Color70">#9799C9</Color>
     <Color x:Key="Color71">#464995</Color>
@@ -228,6 +229,8 @@
                      Color="#1AB300" />
     <SolidColorBrush x:Key="ColorBrush67"
                      Color="#00FF00" />
+    <SolidColorBrush x:Key="ColorBrush68"
+                     Color="#FFD700" />
     <SolidColorBrush x:Key="ColorBrush69"
                      Color="#42FF42" />
     <SolidColorBrush x:Key="ColorBrush70"

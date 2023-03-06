@@ -15,9 +15,9 @@
         WindowStartupLocation="CenterScreen"
         Style="{StaticResource MainWindowStyles}">
     <Window.Background>
-        <ImageBrush ImageSource="Resources/Image/background_gradient.jpg" />
+        <ImageBrush ImageSource="Resources/Image/BackgroundWindow/backgrondYummyShopWindow.jpg" />
     </Window.Background>
-
+    
     <Window.Resources>
         <Style x:Key="ButtonFlipProfileStyle"
                TargetType="{x:Type Button}">

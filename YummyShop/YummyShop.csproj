@@ -9,12 +9,9 @@
 
   <ItemGroup>
     <None Remove="View\Resources\Image\authorizationIcon.png" />
-    <None Remove="View\Resources\Image\Background_1.jpg" />
-    <None Remove="View\Resources\Image\background_2.jpg" />
-    <None Remove="View\Resources\Image\background_gradient.jpg" />
-    <None Remove="View\Resources\Image\LogoText.png" />
-    <None Remove="View\Resources\Image\Logotype_1.png" />
-    <None Remove="View\Resources\Image\logo_1.jpg" />
+    <None Remove="View\Resources\Image\backgrondAuthorizationWindow.jpg" />
+    <None Remove="View\Resources\Image\backgrondRegistrationWindow.jpg" />
+    <None Remove="View\Resources\Image\backgrondYummyShopWindow.jpg" />
     <None Remove="View\Resources\Image\registrationIcon.png" />
   </ItemGroup>
 
@@ -30,25 +27,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="View\Resources\Image\background_1.jpg">
+    <Resource Include="View\Resources\Image\BackgroundWindow\backgrondRegistrationWindow.jpg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="View\Resources\Image\authorizationIcon.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="View\Resources\Image\background_2.jpg">
+    <Resource Include="View\Resources\Image\BackgroundWindow\backgrondAuthorizationWindow.jpg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="View\Resources\Image\background_gradient.jpg">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\Resources\Image\LogoText.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\Resources\Image\Logotype_1.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\Resources\Image\logo_1.jpg">
+    <Resource Include="View\Resources\Image\BackgroundWindow\backgrondYummyShopWindow.jpg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="View\Resources\Image\registrationIcon.png">
