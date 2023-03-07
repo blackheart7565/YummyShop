@@ -1,12 +1,15 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Windows;
 using System.Windows.Forms;
+using System.Windows.Media;
+using Azure;
 using YummyShop.Model.Base;
 using YummyShop.Model.Commands;
 using YummyShop.Model.Data;
 using YummyShop.Model.DataBaseTableModel;
 using YummyShop.View;
+using Control = System.Windows.Controls.Control;
+using TextBox = System.Windows.Controls.TextBox;
 
 namespace YummyShop.ViewModel.MainWindowFolder {
     public class MainRegistrationWindow : PropertyChangedBase {
@@ -14,15 +17,14 @@ namespace YummyShop.ViewModel.MainWindowFolder {
         private RelayCommandT<Window>? _windowMinimizateCommand;
         private RelayCommandT<Window>? _windowCloseCommand;
         private RelayCommandT<Window>? _buttonWindowRegisterCommand;
-        
+
         private RelayCommand? _inputImageCommand;
 
         private byte[]? _imageByte;
 
         #region Property
 
-        public byte[]? ImageByte
-        {
+        public byte[]? ImageByte {
             get => _imageByte;
             set => SetField(ref _imageByte, value, nameof(ImageByte));
         }
@@ -78,9 +80,8 @@ namespace YummyShop.ViewModel.MainWindowFolder {
         /// </summary>
         public RelayCommand? InputImageCommand {
             get {
-                return _inputImageCommand ??= new RelayCommand(sender =>
-                {
-                    using (OpenFileDialog fileDialog = new OpenFileDialog()) {
+                return _inputImageCommand ??= new RelayCommand(sender => {
+                    using (var fileDialog = new OpenFileDialog()) {
                         if (fileDialog.ShowDialog() == DialogResult.OK) {
                             using (FileStream fileStream = new FileStream(fileDialog.FileName, FileMode.Open, FileAccess.Read)) {
                                 using (BinaryReader binaryReader = new BinaryReader(fileStream)) {

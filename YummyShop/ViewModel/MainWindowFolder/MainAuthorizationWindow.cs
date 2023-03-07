@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using YummyShop.Model.Commands;
 using YummyShop.Model.Data;
+using YummyShop.Model.DataBaseTableModel;
 using YummyShop.View;
 
 namespace YummyShop.ViewModel.MainWindowFolder {
@@ -14,6 +15,8 @@ namespace YummyShop.ViewModel.MainWindowFolder {
         private RelayCommandT<Window>? _authorizationAccountCommand;
 
         private RelayCommand? _windowCloseCommand;
+        public static byte[]? Images { get; set; }
+        public static string? Username{ get; set; }
 
         #region All Commands
 
@@ -62,12 +65,23 @@ namespace YummyShop.ViewModel.MainWindowFolder {
                         string username = win.TextBoxLoginUsername.Text;
                         string password = win.TextBoxLoginPassword.Password;
 
-                        // SQL_Latin1_General_CP1_CS_AS - Учитывает регистп Базы Данных
+                        // SQL_Latin1_General_CP1_CS_AS - Учитывает регистр Базы Данных
                         bool isLoginAccount = contextDb.Users.Any(x => EF.Functions.Collate(x.Username, "SQL_Latin1_General_CP1_CS_AS") == username &&
                                                                        EF.Functions.Collate(x.Password, "SQL_Latin1_General_CP1_CS_AS") == password ||
                                                                        EF.Functions.Collate(x.Email, "SQL_Latin1_General_CP1_CS_AS") == username &&
                                                                        EF.Functions.Collate(x.Password, "SQL_Latin1_General_CP1_CS_AS") == password);
-                        if (isLoginAccount) {
+                        if (isLoginAccount)
+                        {
+                            foreach (Users bytes in contextDb.Users.Where(x =>
+                                         EF.Functions.Collate(x.Username, "SQL_Latin1_General_CP1_CS_AS") == username &&
+                                         EF.Functions.Collate(x.Password, "SQL_Latin1_General_CP1_CS_AS") == password ||
+                                         EF.Functions.Collate(x.Email, "SQL_Latin1_General_CP1_CS_AS") == username &&
+                                         EF.Functions.Collate(x.Password, "SQL_Latin1_General_CP1_CS_AS") == password))
+                            {
+                                Images = bytes.Image;
+                                Username = bytes.Username;
+                            }
+
                             win.TextBoxLoginUsername.Text = "";
                             win.TextBoxLoginPassword.Password = "";
                             var winShop = new YummyShopWindow();

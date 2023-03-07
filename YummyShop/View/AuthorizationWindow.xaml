@@ -98,10 +98,6 @@
                         <RowDefinition Height="100" />
                     </Grid.RowDefinitions>
 
-                    <!--<Image Grid.Row="0"
-                           Source="Resources/Image/Logotype_1.png"
-                           Height="100" />-->
-
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
@@ -115,13 +111,13 @@
 
                         <TextBlock Grid.Row="1"
                                    Style="{StaticResource AuthorizationTextBlock}"
-                                   Text="Username" />
+                                   Text="Имя пользователя" />
                         <TextBox Grid.Row="2"
                                  Name="TextBoxLoginUsername"
                                  Style="{StaticResource TextBoxLoginStyles}" />
                         <TextBlock Grid.Row="3"
                                    Style="{StaticResource AuthorizationTextBlock}"
-                                   Text="Password" />
+                                   Text="Пароль" />
                         <PasswordBox Grid.Row="4"
                                      Name="TextBoxLoginPassword"
                                      Style="{StaticResource TextBoxPasswordStyles}" />
@@ -129,10 +125,10 @@
 
                     <StackPanel Grid.Row="2">
                         <Button Style="{StaticResource ButtonLoginStyles}"
-                                Content="Login"
+                                Content="Войти"
                                 Command="{Binding AuthorizationAccountCommand}"
                                 CommandParameter="{Binding ElementName=AuthorizationWindowName}" />
-                        <Button Content="У вас немае аккаунта?"
+                        <Button Content="У вас нету аккаунта?"
                                 Style="{StaticResource ButtonRegistrationInfoStyles}"
                                 Command="{Binding ShowRegistrationInfoWindowCommand}"
                                 CommandParameter="{Binding ElementName=AuthorizationWindowName}" />
