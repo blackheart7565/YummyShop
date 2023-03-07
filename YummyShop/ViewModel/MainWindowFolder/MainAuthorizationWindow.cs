@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 using System.Windows;
-using YummyShop.Model.Commands;
+using YummyShop.Model.YummyCommands;
 using YummyShop.Model.Data;
 using YummyShop.Model.DataBaseTableModel;
 using YummyShop.View;

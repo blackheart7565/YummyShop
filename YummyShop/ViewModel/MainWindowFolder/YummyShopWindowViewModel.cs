@@ -1,6 +1,8 @@
 ﻿using System.Windows;
 using YummyShop.Model.Base;
-using YummyShop.Model.Commands;
+using YummyShop.Model.YummyCommands;
+using YummyShop.View;
+using YummyShop.View.Pages;
 
 namespace YummyShop.ViewModel.MainWindowFolder {
     public class YummyShopWindowViewModel : PropertyChangedBase {
@@ -11,7 +13,9 @@ namespace YummyShop.ViewModel.MainWindowFolder {
         private RelayCommandT<Window>? _buttonMaximizateWindowShopCommand;
         private RelayCommandT<Window>? _buttonMinimizateWindowShopCommand;
         private RelayCommandT<Window>? _buttonCloseWindowShopCommand;
+        private RelayCommandT<Window>? _buttonShoppingBaskedCommand;
 
+        
         #region All Commands
 
         /// <summary>
@@ -51,6 +55,18 @@ namespace YummyShop.ViewModel.MainWindowFolder {
             get {
                 return _buttonMinimizateWindowShopCommand ??= new RelayCommandT<Window>(sender => {
                     sender.WindowState = WindowState.Minimized;
+                });
+            }
+        }
+        /// <summary>
+        /// Корзина товаров
+        /// </summary>
+        public RelayCommandT<Window>? ButtonShoppingBaskedCommand {
+            get {
+                return _buttonShoppingBaskedCommand ??= new RelayCommandT<Window>(sender =>
+                {
+                    if (sender is YummyShopWindow win) 
+                        win.ShopFramePage.Content = new Home();
                 });
             }
         }

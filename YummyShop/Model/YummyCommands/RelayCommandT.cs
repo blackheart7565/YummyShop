@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace YummyShop.Model.Commands {
+namespace YummyShop.Model.YummyCommands {
     public class RelayCommandT<T> : ICommand {
         private readonly Action<T>? _executeAction;
         private readonly Func<T, bool>? _canExecuteAction;

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace YummyShop.Model.Commands {
+namespace YummyShop.Model.YummyCommands {
     public class RelayCommand : ICommand {
 
         private readonly Action<object>? _executeAction;

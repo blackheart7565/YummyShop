@@ -1,15 +1,11 @@
 ﻿using System.IO;
 using System.Windows;
 using System.Windows.Forms;
-using System.Windows.Media;
-using Azure;
 using YummyShop.Model.Base;
-using YummyShop.Model.Commands;
 using YummyShop.Model.Data;
 using YummyShop.Model.DataBaseTableModel;
+using YummyShop.Model.YummyCommands;
 using YummyShop.View;
-using Control = System.Windows.Controls.Control;
-using TextBox = System.Windows.Controls.TextBox;
 
 namespace YummyShop.ViewModel.MainWindowFolder {
     public class MainRegistrationWindow : PropertyChangedBase {

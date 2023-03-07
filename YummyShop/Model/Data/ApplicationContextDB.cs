@@ -5,10 +5,11 @@ namespace YummyShop.Model.Data {
     /// <summary>
     /// Класс подключения к БД || создание БД
     /// </summary>
-
     public class ApplicationContextDB : DbContext {
         
         public DbSet<Users> Users { get; set; }
+        public DbSet<Videocards> Videocards { get; set; }
+        public DbSet<Products> Products { get; set; }
 
         public ApplicationContextDB() {
             Database.EnsureCreated();
