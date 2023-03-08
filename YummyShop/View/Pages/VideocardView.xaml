@@ -25,9 +25,22 @@
             </Border.Background>
         </Border>
 
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Добавить товар"
+                    Width="150"
+                    Height="30"
+                    FlowDirection="LeftToRight" 
+                    Background="Transparent"
+                    Foreground="{StaticResource ColorBrush8}"
+                    FontSize="13"
+                    BorderBrush="Transparent"
+                    FontWeight="Bold"
+                    Command="{Binding Path=OpenWindowAddToVideocardCommand}"
+                    CommandParameter="{Binding ElementName=PageVideocarName}"/>
+        </StackPanel>
+
         <ListBox Grid.Row="1"
                  Background="Transparent"
-                 x:Name="ListBoxName"
                  ItemsSource="{Binding Path=VideocardsCollectionDB,UpdateSourceTrigger=PropertyChanged}">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>

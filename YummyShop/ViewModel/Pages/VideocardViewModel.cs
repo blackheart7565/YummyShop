@@ -1,140 +1,43 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
 using YummyShop.Model.Base;
 using YummyShop.Model.Data;
 using YummyShop.Model.DataBaseTableModel;
+using YummyShop.Model.YummyCommands;
+using YummyShop.View;
+using YummyShop.View.AddProductWindow;
 
 namespace YummyShop.ViewModel.Pages {
     public class VideocardViewModel : PropertyChangedBase {
-        private ApplicationContextDB contextDB = new();
 
-        public ObservableCollection<Videocards> VideocardsCollection { get; set; } =
-            new ObservableCollection<Videocards>() {
-                new Videocards()
-                {
-                    GraphicsChip = "GeForce RTX 3060",
-                    MemoryFrequency = "15000 МГц",
-        Memory = "12 ГБ",
-                    MemoryBusWidth = "192 бит",
-                    MaximumSupportedResolution = "7680x4320",
-                    Dimensions = "200 x 123 x 38 мм",
-                    Connectors = "DisplayPort\r\nHDMI",
-                    Price = 16299,
-                    Count = 10,
-                },
-                new Videocards()
-                {
-                    GraphicsChip = "GeForce RTX 3060",
-                    MemoryFrequency = "15000 МГц",
-                    Memory = "12 ГБ",
-                    MemoryBusWidth = "192 бит",
-                    MaximumSupportedResolution = "7680x4320",
-                    Dimensions = "200 x 123 x 38 мм",
-                    Connectors = "DisplayPort\r\nHDMI",
-                    Price = 16299,
-                    Count = 10,
-                },
-                new Videocards()
-                {
-                    GraphicsChip = "GeForce RTX 3060",
-                    MemoryFrequency = "15000 МГц",
-                    Memory = "12 ГБ",
-                    MemoryBusWidth = "192 бит",
-                    MaximumSupportedResolution = "7680x4320",
-                    Dimensions = "200 x 123 x 38 мм",
-                    Connectors = "DisplayPort\r\nHDMI",
-                    Price = 16299,
-                    Count = 10,
-                },
-                new Videocards()
-                {
-                    GraphicsChip = "GeForce RTX 3060",
-                    MemoryFrequency = "15000 МГц",
-                    Memory = "12 ГБ",
-                    MemoryBusWidth = "192 бит",
-                    MaximumSupportedResolution = "7680x4320",
-                    Dimensions = "200 x 123 x 38 мм",
-                    Connectors = "DisplayPort\r\nHDMI",
-                    Price = 16299,
-                    Count = 10,
-                },
-                new Videocards()
-                {
-                    GraphicsChip = "GeForce RTX 3060",
-                    MemoryFrequency = "15000 МГц",
-                    Memory = "12 ГБ",
-                    MemoryBusWidth = "192 бит",
-                    MaximumSupportedResolution = "7680x4320",
-                    Dimensions = "200 x 123 x 38 мм",
-                    Connectors = "DisplayPort\r\nHDMI",
-                    Price = 16299,
-                    Count = 10,
-                },
-                new Videocards()
-                {
-                    GraphicsChip = "GeForce RTX 3060",
-                    MemoryFrequency = "15000 МГц",
-                    Memory = "12 ГБ",
-                    MemoryBusWidth = "192 бит",
-                    MaximumSupportedResolution = "7680x4320",
-                    Dimensions = "200 x 123 x 38 мм",
-                    Connectors = "DisplayPort\r\nHDMI",
-                    Price = 16299,
-                    Count = 10,
-                },
-                new Videocards()
-                {
-                    GraphicsChip = "GeForce RTX 3060",
-                    MemoryFrequency = "15000 МГц",
-                    Memory = "12 ГБ",
-                    MemoryBusWidth = "192 бит",
-                    MaximumSupportedResolution = "7680x4320",
-                    Dimensions = "200 x 123 x 38 мм",
-                    Connectors = "DisplayPort\r\nHDMI",
-                    Price = 16299,
-                    Count = 10,
-                },
-                new Videocards()
-                {
-                    GraphicsChip = "GeForce RTX 3060",
-                    MemoryFrequency = "15000 МГц",
-                    Memory = "12 ГБ",
-                    MemoryBusWidth = "192 бит",
-                    MaximumSupportedResolution = "7680x4320",
-                    Dimensions = "200 x 123 x 38 мм",
-                    Connectors = "DisplayPort\r\nHDMI",
-                    Price = 16299,
-                    Count = 10,
-                },
-                new Videocards()
-                {
-                    GraphicsChip = "GeForce RTX 3060",
-                    MemoryFrequency = "15000 МГц",
-                    Memory = "12 ГБ",
-                    MemoryBusWidth = "192 бит",
-                    MaximumSupportedResolution = "7680x4320",
-                    Dimensions = "200 x 123 x 38 мм",
-                    Connectors = "DisplayPort\r\nHDMI",
-                    Price = 16299,
-                    Count = 10,
-                },
-                new Videocards()
-                {
-                    GraphicsChip = "GeForce RTX 3060",
-                    MemoryFrequency = "15000 МГц",
-                    Memory = "12 ГБ",
-                    MemoryBusWidth = "192 бит",
-                    MaximumSupportedResolution = "7680x4320",
-                    Dimensions = "200 x 123 x 38 мм",
-                    Connectors = "DisplayPort\r\nHDMI",
-                    Price = 16299,
-                    Count = 10,
-                }
-            };
+        private RelayCommandT<Page>? _openWindowAddToVideocardCommand;
 
+        #region PROPERTY
 
-        public List<Videocards>? VideocardsCollectionDB => contextDB.Videocards.ToList();
+        /// <summary>
+        /// Получение всех данных из таблицы "Videocards"
+        /// </summary>
+        public List<Videocards>? VideocardsCollectionDB => new ApplicationContextDB().Videocards.ToList();
+
+        #endregion
+
+        #region All Command
+
+        /// <summary>
+        /// Открытие окна добавление товара в таблицу Videocard
+        /// </summary>
+        public RelayCommandT<Page> OpenWindowAddToVideocardCommand {
+            get => _openWindowAddToVideocardCommand ??= new RelayCommandT<Page>(sender => {
+                var win = new AddToVideocardWindow();
+                win.ShowDialog();
+            });
+        }
+
+        #endregion
     }
 }

@@ -1,0 +1,176 @@
+﻿<Window x:Class="YummyShop.View.AddProductWindow.AddToVideocardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:fontW="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:YummyShop.ViewModel.AddProductWindow"
+        mc:Ignorable="d"
+        Title="AddToVideocardWindow"
+        Height="630"
+        x:Name="AddToVideocardWindowName"
+        Width="1000">
+
+    <Window.Resources>
+        <Style x:Key="textBlockAddVideocardStyles"
+               TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize"
+                    Value="15" />
+            <Setter Property="FontWeight"
+                    Value="Bold" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource GradientBrush1}" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+        </Style>
+        <Style x:Key="textBoxAddVideocardStyles"
+               TargetType="{x:Type TextBox}">
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="BorderBrush"
+                    Value="{StaticResource ColorBrush72}" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource ColorBrush72}" />
+            <Setter Property="BorderThickness"
+                    Value="0,0,0,2" />
+            <Setter Property="Height"
+                    Value="40" />
+            <Setter Property="FontWeight"
+                    Value="Bold" />
+            <Setter Property="FontSize"
+                    Value="13" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center" />
+            <Setter Property="HorizontalContentAlignment"
+                    Value="Center" />
+            <Setter Property="Padding"
+                    Value="0,8,0,0" />
+        </Style>
+    </Window.Resources>
+
+    <Window.DataContext>
+        <viewModel:AddToVideocardWindowViewModel />
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="../Resources/Image/BackgroundWindow/backgrondYummyShopWindow.jpg" />
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Text="Videocard"
+                       FontSize="40"
+                       Grid.Row="0"
+                       FontWeight="Bold"
+                       Foreground="{StaticResource GradientBrush12}"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center" />
+            <StackPanel Grid.Row="1">
+                <TextBlock Text="Графический чип"
+                           Style="{StaticResource textBlockAddVideocardStyles}" />
+                <TextBox Style="{StaticResource textBoxAddVideocardStyles}" />
+            </StackPanel>
+            <StackPanel Grid.Row="2">
+                <TextBlock Text="Частота памяти"
+                           Style="{StaticResource textBlockAddVideocardStyles}" />
+                <TextBox Style="{StaticResource textBoxAddVideocardStyles}" />
+            </StackPanel>
+            <StackPanel Grid.Row="3">
+                <TextBlock Text="Объем памяти"
+                           Style="{StaticResource textBlockAddVideocardStyles}" />
+                <TextBox Style="{StaticResource textBoxAddVideocardStyles}" />
+            </StackPanel>
+            <StackPanel Grid.Row="4">
+                <TextBlock Text="Разрядность шины памяти"
+                           Style="{StaticResource textBlockAddVideocardStyles}" />
+                <TextBox Style="{StaticResource textBoxAddVideocardStyles}" />
+            </StackPanel>
+            <StackPanel Grid.Row="5">
+                <TextBlock Text="Максимально поддерживаемое разрешение"
+                           Style="{StaticResource textBlockAddVideocardStyles}" />
+                <TextBox Style="{StaticResource textBoxAddVideocardStyles}" />
+            </StackPanel>
+            <StackPanel Grid.Row="6">
+                <TextBlock Text="Размеры"
+                           Style="{StaticResource textBlockAddVideocardStyles}" />
+                <TextBox Style="{StaticResource textBoxAddVideocardStyles}" />
+            </StackPanel>
+            <StackPanel Grid.Row="7">
+                <TextBlock Text="Разъемы"
+                           Style="{StaticResource textBlockAddVideocardStyles}" />
+                <TextBox Style="{StaticResource textBoxAddVideocardStyles}" />
+            </StackPanel>
+        </Grid>
+        <Grid  Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="40" />
+                    <ColumnDefinition Width="40" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="2"
+                        Width="30"
+                        Height="30"
+                        Command="{Binding Path=CloseWindowAddToVideocard}"
+                        CommandParameter="{Binding ElementName=AddToVideocardWindowName}">
+                    <fontW:IconImage Icon="Xmark"
+                                     Width="10" />
+                </Button>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Width="150"
+                        Height="30"
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Background="Transparent"
+                        Content="Добавить изображение"
+                        Foreground="{StaticResource ColorBrush7}"
+                        FontSize="10"
+                        FontWeight="Bold"
+                        BorderBrush="{StaticResource ColorBrush7}"
+                        BorderThickness="0,0,0,1" />
+                <Button Width="150"
+                        Height="30"
+                        Grid.Column="2"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Background="Transparent"
+                        Content="Добавить изображение"
+                        Foreground="{StaticResource ColorBrush67}"
+                        FontSize="10"
+                        FontWeight="Bold"
+                        BorderBrush="{StaticResource ColorBrush67}"
+                        BorderThickness="0,0,0,1" />
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
