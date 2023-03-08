@@ -64,112 +64,7 @@
             <Setter Property="Foreground"
                     Value="{StaticResource ColorBrush86}" />
         </Style>
-
-        <!--Button Categori-->
-        <Style x:Key="ButtonCategoriStyles"
-               TargetType="{x:Type Button}">
-            <Setter Property="Width"
-                    Value="130" />
-            <Setter Property="Margin"
-                    Value="50,0,0,0" />
-            <Setter Property="Background"
-                    Value="Transparent" />
-            <Setter Property="BorderBrush"
-                    Value="Transparent" />
-            <Setter Property="BorderThickness"
-                    Value="1" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="35" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-
-                                <Image Grid.Column="0"
-                                       Source="Resources/Image/Logo.png" />
-                                <TextBlock Grid.Column="1"
-                                           Text="{Binding Path=Tag, RelativeSource={RelativeSource Mode=FindAncestor,
-                                                                AncestorType={x:Type Button}}}"
-                                           Foreground="{StaticResource ColorBrush72}"
-                                           FontWeight="Bold"
-                                           FontSize="13"
-                                           VerticalAlignment="Center"
-                                           HorizontalAlignment="Center" />
-                            </Grid>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver"
-                         Value="True">
-                    <Setter Property="BorderBrush"
-                            Value="{StaticResource GradientBrush1}" />
-                </Trigger>
-                <Trigger Property="IsPressed"
-                         Value="True">
-                    <Setter Property="BorderBrush"
-                            Value="{StaticResource GradientBrush2}" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="ToggleButtonCategoriStyles"
-               TargetType="{x:Type ToggleButton}">
-            <Setter Property="Width"
-                    Value="130" />
-            <Setter Property="Margin"
-                    Value="50,0,0,0" />
-            <Setter Property="Background"
-                    Value="Transparent" />
-            <Setter Property="BorderBrush"
-                    Value="Transparent" />
-            <Setter Property="BorderThickness"
-                    Value="1" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ToggleButton}">
-                        <Border Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="35" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-
-                                <Image Grid.Column="0"
-                                       Source="Resources/Image/Logo.png" />
-                                <TextBlock Grid.Column="1"
-                                           Text="{Binding Path=Tag, RelativeSource={RelativeSource Mode=FindAncestor,
-                                                                    AncestorType={x:Type ToggleButton}}}"
-                                           Foreground="{StaticResource ColorBrush72}"
-                                           FontWeight="Bold"
-                                           FontSize="13"
-                                           VerticalAlignment="Center"
-                                           HorizontalAlignment="Center" />
-                            </Grid>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver"
-                         Value="True">
-                    <Setter Property="BorderBrush"
-                            Value="{StaticResource GradientBrush1}" />
-                </Trigger>
-                <Trigger Property="IsPressed"
-                         Value="True">
-                    <Setter Property="BorderBrush"
-                            Value="{StaticResource GradientBrush2}" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
+        
     </Window.Resources>
 
     <Window.Background>
@@ -288,16 +183,17 @@
                               Width="150"
                               VerticalContentAlignment="Center"
                               HorizontalContentAlignment="Center">
-                        <StackPanel Orientation="Horizontal"
-                                    VerticalAlignment="Center">
-                            <WrapPanel Orientation="Vertical">
+                        <WrapPanel>
+                            <StackPanel>
                                 <TextBlock Text="Комплектующие"
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Center"
                                            FontWeight="Bold"
                                            FontSize="15" />
                                 <Separator />
-                                <MenuItem Header="Видеокарты" />
+                                <MenuItem Header="Видеокарты"
+                                          Command="{Binding ButtonShowPageVideocardCatalogCommand}"
+                                          CommandParameter="{Binding ElementName=YummyShopWindowName}" />
                                 <MenuItem Header="SSD" />
                                 <MenuItem Header="Процессоры" />
                                 <MenuItem Header="Материнские платы" />
@@ -306,10 +202,8 @@
                                 <MenuItem Header="Жесткие диски и дисковые массивы" />
                                 <MenuItem Header="Оперативная память" />
                                 <MenuItem Header="Системы охлаждения" />
-                            </WrapPanel>
-                            <WrapPanel Orientation="Vertical"
-                                       SnapsToDevicePixels="False"
-                                       Margin="5,0,0,0">
+                            </StackPanel>
+                            <StackPanel>
                                 <TextBlock Text="Аксессуары для электроники"
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Center"
@@ -326,10 +220,8 @@
                                 <MenuItem Header="Универсальные мобильные батареи для ноутбуков" />
                                 <MenuItem Header="Кабели и переходники" />
                                 <MenuItem Header="Графические планшеты" />
-                            </WrapPanel>
-                            <WrapPanel Orientation="Vertical"
-                                       SnapsToDevicePixels="False"
-                                       Margin="5,0,0,0">
+                            </StackPanel>
+                            <StackPanel>
                                 <TextBlock Text="Ноутбуки"
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Center"
@@ -342,9 +234,8 @@
                                 <MenuItem Header="Lenovo" />
                                 <MenuItem Header="Dell" />
                                 <MenuItem Header="Apple Macbook" />
-                            </WrapPanel>
-                        </StackPanel>
-
+                            </StackPanel>
+                        </WrapPanel>
                     </MenuItem>
                 </Menu>
 
@@ -355,7 +246,7 @@
                     CommandParameter="{Binding ElementName=YummyShopWindowName}">
                 <fontW:IconImage Icon="ShoppingBasket"
                                  Width="23"
-                                 Foreground="{StaticResource ColorBrush72}"/>
+                                 Foreground="{StaticResource ColorBrush72}" />
             </Button>
             <Ellipse Grid.Column="2"
                      Width="40"

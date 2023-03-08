@@ -71,6 +71,24 @@ namespace YummyShop.ViewModel.MainWindowFolder {
             }
         }
 
+
+
+        #region Catalog
+
+        private RelayCommandT<Window>? _buttonShowPageVideocardCatalogCommand;
+
+        public RelayCommandT<Window>? ButtonShowPageVideocardCatalogCommand {
+            get {
+                return _buttonShoppingBaskedCommand ??= new RelayCommandT<Window>(sender => {
+                    if (sender is YummyShopWindow win)
+                        win.ShopFramePage.Content = new VideocardView();
+                });
+            }
+        }
+
+        #endregion
+
+
         #endregion
     }
 }

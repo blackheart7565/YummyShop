@@ -1,5 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-using System.Windows.Controls;
+using System.Windows;
 using YummyShop.Model.Base;
 using YummyShop.Model.DataBaseTableModel;
 using YummyShop.Model.YummyCommands;
@@ -20,6 +20,19 @@ namespace YummyShop.ViewModel.Pages {
                     Price = 546,
                 }
             };
+
+        private RelayCommandT<Window> _showToHomeProductsCommand;
+        public RelayCommandT<Window> ShowToHomeProductsCommand
+        {
+            get
+            {
+                return _showToHomeProductsCommand ??= new RelayCommandT<Window>(sender =>
+                {
+
+                });
+            }
+        }
+
 
     }
 }

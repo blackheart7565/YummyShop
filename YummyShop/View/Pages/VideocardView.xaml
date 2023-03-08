@@ -1,0 +1,83 @@
+﻿<Page x:Class="YummyShop.View.Pages.VideocardView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:viewModel="clr-namespace:YummyShop.ViewModel.Pages"
+      mc:Ignorable="d"
+      d:DesignHeight="450"
+      d:DesignWidth="1000"
+      Title="VideocardView"
+      Name="PageVideocarName">
+
+    <Page.DataContext>
+        <viewModel:VideocardViewModel />
+    </Page.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Border Grid.RowSpan="2">
+            <Border.Background>
+                <ImageBrush ImageSource="../Resources/Image/BackgroundWindow/backgrondYummyShopWindow.jpg" />
+            </Border.Background>
+        </Border>
+
+        <ListBox Grid.Row="1"
+                 Background="Transparent"
+                 x:Name="ListBoxName"
+                 ItemsSource="{Binding Path=VideocardsCollectionDB,UpdateSourceTrigger=PropertyChanged}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"
+                               MaxWidth="{Binding ActualWidth, ElementName= PageVideocarName}"
+                               HorizontalAlignment="Center" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Image Grid.Row="0"
+                               Source="{Binding Path= Image, UpdateSourceTrigger=PropertyChanged}" />
+                        <StackPanel Grid.Row="1"
+                                    Orientation="Horizontal">
+                            <TextBlock Text="Количество:"
+                                       FontWeight="Bold"
+                                       FontSize="15"
+                                       Foreground="{StaticResource ColorBrush6}"
+                                       Margin="0,0,15,0" />
+                            <TextBlock HorizontalAlignment="Center"
+                                       FontWeight="Bold"
+                                       FontSize="15"
+                                       Foreground="{StaticResource ColorBrush6}"
+                                       Text="{Binding Path=Count, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+                        <StackPanel Grid.Row="2"
+                                    Orientation="Horizontal">
+                            <TextBlock Text="Цена:"
+                                       Margin="0,0,50,0"
+                                       FontWeight="Bold"
+                                       Foreground="{StaticResource ColorBrush3}"
+                                       FontSize="15" />
+                            <TextBlock HorizontalAlignment="Center"
+                                       FontWeight="Bold"
+                                       FontSize="15"
+                                       Foreground="{StaticResource ColorBrush3}"
+                                       Text="{Binding Path=Price, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </Grid>
+
+</Page>
