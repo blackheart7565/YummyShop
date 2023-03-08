@@ -65,7 +65,7 @@ namespace YummyShop.ViewModel.MainWindowFolder {
                             Email = win.TextBoxEmmail.Text,
                             Phone = win.TextBoxPhone.Text,
                         });
-                        contextDb.SaveChanges();
+                        contextDb.SaveChangesAsync();
                         win.Close();
                     };
                 });

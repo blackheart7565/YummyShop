@@ -7,7 +7,7 @@
         xmlns:viewModel="clr-namespace:YummyShop.ViewModel.AddProductWindow"
         mc:Ignorable="d"
         Title="AddToVideocardWindow"
-        Height="630"
+        Height="800"
         x:Name="AddToVideocardWindowName"
         Width="1000">
 
@@ -73,6 +73,8 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <TextBlock Text="Videocard"
                        FontSize="40"
@@ -84,47 +86,58 @@
             <StackPanel Grid.Row="1">
                 <TextBlock Text="Графический чип"
                            Style="{StaticResource textBlockAddVideocardStyles}" />
-                <TextBox Style="{StaticResource textBoxAddVideocardStyles}" />
+                <TextBox x:Name="GraphicsChipName"  Style="{StaticResource textBoxAddVideocardStyles}" />
             </StackPanel>
             <StackPanel Grid.Row="2">
                 <TextBlock Text="Частота памяти"
                            Style="{StaticResource textBlockAddVideocardStyles}" />
-                <TextBox Style="{StaticResource textBoxAddVideocardStyles}" />
+                <TextBox x:Name="MemoryFrequencyName" Style="{StaticResource textBoxAddVideocardStyles}" />
             </StackPanel>
             <StackPanel Grid.Row="3">
                 <TextBlock Text="Объем памяти"
                            Style="{StaticResource textBlockAddVideocardStyles}" />
-                <TextBox Style="{StaticResource textBoxAddVideocardStyles}" />
+                <TextBox x:Name="MemoryName" Style="{StaticResource textBoxAddVideocardStyles}" />
             </StackPanel>
             <StackPanel Grid.Row="4">
                 <TextBlock Text="Разрядность шины памяти"
                            Style="{StaticResource textBlockAddVideocardStyles}" />
-                <TextBox Style="{StaticResource textBoxAddVideocardStyles}" />
+                <TextBox x:Name="MemoryBusWidthName" Style="{StaticResource textBoxAddVideocardStyles}" />
             </StackPanel>
             <StackPanel Grid.Row="5">
                 <TextBlock Text="Максимально поддерживаемое разрешение"
                            Style="{StaticResource textBlockAddVideocardStyles}" />
-                <TextBox Style="{StaticResource textBoxAddVideocardStyles}" />
+                <TextBox x:Name="MaximumSupportedResolutionName" Style="{StaticResource textBoxAddVideocardStyles}" />
             </StackPanel>
             <StackPanel Grid.Row="6">
                 <TextBlock Text="Размеры"
                            Style="{StaticResource textBlockAddVideocardStyles}" />
-                <TextBox Style="{StaticResource textBoxAddVideocardStyles}" />
+                <TextBox x:Name="DimensionsName" Style="{StaticResource textBoxAddVideocardStyles}" />
             </StackPanel>
             <StackPanel Grid.Row="7">
                 <TextBlock Text="Разъемы"
                            Style="{StaticResource textBlockAddVideocardStyles}" />
-                <TextBox Style="{StaticResource textBoxAddVideocardStyles}" />
+                <TextBox x:Name="ConnectorsName" Style="{StaticResource textBoxAddVideocardStyles}" />
+            </StackPanel>
+            <StackPanel Grid.Row="8">
+                <TextBlock Text="Цена"
+                           Style="{StaticResource textBlockAddVideocardStyles}" />
+                <TextBox x:Name="PriceName" Style="{StaticResource textBoxAddVideocardStyles}" />
+            </StackPanel>
+            <StackPanel Grid.Row="9">
+                <TextBlock Text="Количество"
+                           Style="{StaticResource textBlockAddVideocardStyles}" />
+                <TextBox x:Name="CountName" Style="{StaticResource textBoxAddVideocardStyles}" />
             </StackPanel>
         </Grid>
         <Grid  Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40" />
-                <RowDefinition Height="80" />
+                <RowDefinition Height="150" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="80" />
+                <RowDefinition Height="150" />
                 <RowDefinition Height="40" />
             </Grid.RowDefinitions>
+            <Image Grid.Row="2" Source="{Binding ImageByte}"/>
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -157,19 +170,23 @@
                         FontSize="10"
                         FontWeight="Bold"
                         BorderBrush="{StaticResource ColorBrush7}"
-                        BorderThickness="0,0,0,1" />
+                        BorderThickness="0,0,0,1"
+                        Command="{Binding Path=InputImageCommand}"
+                        CommandParameter="{Binding ElementName=AddToVideocardWindowName}" />
                 <Button Width="150"
                         Height="30"
                         Grid.Column="2"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center"
                         Background="Transparent"
-                        Content="Добавить изображение"
+                        Content="Сохранить"
                         Foreground="{StaticResource ColorBrush67}"
                         FontSize="10"
                         FontWeight="Bold"
                         BorderBrush="{StaticResource ColorBrush67}"
-                        BorderThickness="0,0,0,1" />
+                        BorderThickness="0,0,0,1" 
+                        Command="{Binding Path=AddProductToTableVideocard}"
+                        CommandParameter="{Binding ElementName=AddToVideocardWindowName}"/>
             </Grid>
         </Grid>
     </Grid>

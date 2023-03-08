@@ -38,6 +38,7 @@ namespace YummyShop.ViewModel.Pages {
             });
         }
 
+        
         #endregion
     }
 }
