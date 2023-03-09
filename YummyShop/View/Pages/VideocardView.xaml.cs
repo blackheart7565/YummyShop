@@ -1,5 +1,5 @@
 ﻿using System.Windows.Controls;
-using YummyShop.Model.Data;
+using YummyShop.View.WindowViewDetalisProduct;
 
 namespace YummyShop.View.Pages {
     /// <summary>
@@ -7,9 +7,11 @@ namespace YummyShop.View.Pages {
     /// </summary>
     public partial class VideocardView : Page
     {
+        public static ListBox? VideocardListView;
         public VideocardView()
         {
             InitializeComponent();
+            VideocardListView = ListBoxItemsSourceName;
         }
     }
 }

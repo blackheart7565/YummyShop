@@ -175,8 +175,6 @@
                               Foreground="{StaticResource GradientBrush1}"
                               VerticalContentAlignment="Center"
                               HorizontalContentAlignment="Center">
-                        <WrapPanel>
-                            <StackPanel>
                                 <TextBlock Text="Комплектующие"
                                            Style="{StaticResource textBlockMenuItemStyles}" />
                                 <Separator />
@@ -200,58 +198,12 @@
                                           Style="{StaticResource menuItemStyles}" />
                                 <MenuItem Header="Системы охлаждения"
                                           Style="{StaticResource menuItemStyles}" />
-                            </StackPanel>
-                            <StackPanel>
-                                <TextBlock Text="Аксессуары для электроники"
-                                           Style="{StaticResource textBlockMenuItemStyles}" />
-                                <Separator />
-                                <MenuItem Header="Флеш память USB"
-                                          Style="{StaticResource menuItemStyles}" />
-                                <MenuItem Header="Сетевые фильтры, адаптеры и удлинители"
-                                          Style="{StaticResource menuItemStyles}" />
-                                <MenuItem Header="Сумки, рюкзаки и чехлы для ноутбуков"
-                                          Style="{StaticResource menuItemStyles}" />
-                                <MenuItem Header="Подставки и столики для ноутбуков"
-                                          Style="{StaticResource menuItemStyles}" />
-                                <MenuItem Header="Веб-камеры"
-                                          Style="{StaticResource menuItemStyles}" />
-                                <MenuItem Header="Наушники"
-                                          Style="{StaticResource menuItemStyles}" />
-                                <MenuItem Header="Микрофоны"
-                                          Style="{StaticResource menuItemStyles}" />
-                                <MenuItem Header="Универсальные мобильные батареи для ноутбуков"
-                                          Style="{StaticResource menuItemStyles}" />
-                                <MenuItem Header="Кабели и переходники"
-                                          Style="{StaticResource menuItemStyles}" />
-                                <MenuItem Header="Графические планшеты"
-                                          Style="{StaticResource menuItemStyles}" />
-                            </StackPanel>
-                            <StackPanel>
-                                <TextBlock Text="Ноутбуки"
-                                           Style="{StaticResource textBlockMenuItemStyles}"/>
-                                <Separator />
-                                <MenuItem Header="Asus"
-                                          Style="{StaticResource menuItemStyles}" />
-                                <MenuItem Header="Acer"
-                                          Style="{StaticResource menuItemStyles}" />
-                                <MenuItem Header="HP (Hewlett Packard)"
-                                          Style="{StaticResource menuItemStyles}" />
-                                <MenuItem Header="Lenovo"
-                                          Style="{StaticResource menuItemStyles}" />
-                                <MenuItem Header="Dell"
-                                          Style="{StaticResource menuItemStyles}" />
-                                <MenuItem Header="Apple Macbook"
-                                          Style="{StaticResource menuItemStyles}" />
-                            </StackPanel>
-                        </WrapPanel>
                     </MenuItem>
                 </Menu>
 
             </StackPanel>
             <Button Grid.Column="1"
-                    Background="Transparent"
-                    Command="{Binding ButtonShoppingBaskedCommand}"
-                    CommandParameter="{Binding ElementName=YummyShopWindowName}">
+                    Background="Transparent">
                 <fontW:IconImage Icon="ShoppingBasket"
                                  Width="23"
                                  Foreground="{StaticResource ColorBrush72}" />

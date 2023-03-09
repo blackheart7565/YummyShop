@@ -9,7 +9,8 @@
       d:DesignHeight="450"
       d:DesignWidth="1000"
       Title="Home"
-      Name="PageHomeName">
+      Name="PageHomeName"
+      Background="Yellow">
 
     <Page.DataContext>
         <viewModel:HomeViewModel />
@@ -22,7 +23,7 @@
         </bh:EventTrigger>
     </bh:Interaction.Triggers>-->
 
-    <Grid>
+    <!--<Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
             <RowDefinition Height="*" />
@@ -104,5 +105,5 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-    </Grid>
+    </Grid>-->
 </Page>

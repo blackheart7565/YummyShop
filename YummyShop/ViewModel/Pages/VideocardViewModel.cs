@@ -1,28 +1,27 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
 using System.Windows.Controls;
 using YummyShop.Model.Base;
 using YummyShop.Model.Data;
 using YummyShop.Model.DataBaseTableModel;
 using YummyShop.Model.YummyCommands;
-using YummyShop.View;
 using YummyShop.View.AddProductWindow;
+using YummyShop.View.WindowViewDetalisProduct;
 
 namespace YummyShop.ViewModel.Pages {
     public class VideocardViewModel : PropertyChangedBase {
 
         private RelayCommandT<Page>? _openWindowAddToVideocardCommand;
+        private RelayCommandT<Page>? _doubleClockToShowWindowDetalisCommand;
 
         #region PROPERTY
 
         /// <summary>
         /// Получение всех данных из таблицы "Videocards"
         /// </summary>
-        public List<Videocards>? VideocardsCollectionDB => new ApplicationContextDB().Videocards.ToList();
+        public static List<Videocards>? VideocardsCollectionDB {
+            get => new ApplicationContextDB().Videocards.ToList();
+        }
 
         #endregion
 
@@ -38,7 +37,17 @@ namespace YummyShop.ViewModel.Pages {
             });
         }
 
-        
+
+        public RelayCommandT<Page> DoubleClockToShowWindowDetalisCommand {
+            get {
+                return _doubleClockToShowWindowDetalisCommand ??= new RelayCommandT<Page>(sender => {
+                    VideocardWindowDetalis windowDetalis = new();
+                    windowDetalis.ShowDialog();
+                });
+            }
+        }
+
+
         #endregion
     }
 }

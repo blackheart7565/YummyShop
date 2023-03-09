@@ -4,6 +4,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:viewModel="clr-namespace:YummyShop.ViewModel.Pages"
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d"
       d:DesignHeight="450"
       d:DesignWidth="1000"
@@ -29,44 +30,55 @@
             <Button Content="Добавить товар"
                     Width="150"
                     Height="30"
-                    FlowDirection="LeftToRight" 
+                    FlowDirection="LeftToRight"
                     Background="Transparent"
                     Foreground="{StaticResource ColorBrush8}"
                     FontSize="13"
                     BorderBrush="Transparent"
                     FontWeight="Bold"
                     Command="{Binding Path=OpenWindowAddToVideocardCommand}"
-                    CommandParameter="{Binding ElementName=PageVideocarName}"/>
+                    CommandParameter="{Binding ElementName=PageVideocarName}" />
         </StackPanel>
 
         <ListBox Grid.Row="1"
                  Background="Transparent"
-                 ItemsSource="{Binding Path=VideocardsCollectionDB,UpdateSourceTrigger=PropertyChanged}">
+                 BorderBrush="Transparent"
+                 x:Name="ListBoxItemsSourceName"
+                 ItemsSource="{Binding Path=VideocardsCollectionDB,UpdateSourceTrigger=PropertyChanged}"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal"
-                               MaxWidth="{Binding ActualWidth, ElementName= PageVideocarName}"
-                               HorizontalAlignment="Center" />
+                               Width="{Binding ActualWidth, ElementName= PageVideocarName}" />
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid Name="GridName"
+                          Width="130">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <i:InvokeCommandAction Command="{Binding DoubleClockToShowWindowDetalisCommand}"
+                                                       CommandParameter="{Binding ElementName=PageVideocarName}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="100" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-
                         <Image Grid.Row="0"
-                               Source="{Binding Path= Image, UpdateSourceTrigger=PropertyChanged}" />
+                               Source="{Binding Path= Image, UpdateSourceTrigger=PropertyChanged}"
+                               Height="100"
+                               Width="{Binding ActualWidth, ElementName=GridName}" />
                         <StackPanel Grid.Row="1"
                                     Orientation="Horizontal">
                             <TextBlock Text="Количество:"
                                        FontWeight="Bold"
                                        FontSize="15"
-                                       Foreground="{StaticResource ColorBrush6}"
-                                       Margin="0,0,15,0" />
+                                       Margin="0,0,10,0"
+                                       Foreground="{StaticResource ColorBrush6}" />
                             <TextBlock HorizontalAlignment="Center"
                                        FontWeight="Bold"
                                        FontSize="15"
@@ -76,7 +88,7 @@
                         <StackPanel Grid.Row="2"
                                     Orientation="Horizontal">
                             <TextBlock Text="Цена:"
-                                       Margin="0,0,50,0"
+                                       Margin="0,0,10,0"
                                        FontWeight="Bold"
                                        Foreground="{StaticResource ColorBrush3}"
                                        FontSize="15" />
