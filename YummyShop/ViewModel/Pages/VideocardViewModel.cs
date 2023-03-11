@@ -12,7 +12,7 @@ namespace YummyShop.ViewModel.Pages {
     public class VideocardViewModel : PropertyChangedBase {
 
         private RelayCommandT<Page>? _openWindowAddToVideocardCommand;
-        private RelayCommandT<Page>? _doubleClockToShowWindowDetalisCommand;
+        private RelayCommandT<Grid>? _mouseDownToShowWindowDetalisCommand;
 
         #region PROPERTY
 
@@ -36,16 +36,17 @@ namespace YummyShop.ViewModel.Pages {
                 win.ShowDialog();
             });
         }
-
-
-        public RelayCommandT<Page> DoubleClockToShowWindowDetalisCommand {
-            get {
-                return _doubleClockToShowWindowDetalisCommand ??= new RelayCommandT<Page>(sender => {
-                    VideocardWindowDetalis windowDetalis = new();
-                    windowDetalis.ShowDialog();
-                });
-            }
-        }
+        /// <summary>
+        /// Открывает окно характеристики товара
+        /// </summary>
+        //public RelayCommandT<Grid> MouseDownToShowWindowDetalisCommand {
+        //    get {
+        //        return _mouseDownToShowWindowDetalisCommand ??= new RelayCommandT<Grid>(sender => {
+        //            VideocardWindowDetalis windowDetalis = new();
+        //            windowDetalis.ShowDialog();
+        //        });
+        //    }
+        //}
 
 
         #endregion

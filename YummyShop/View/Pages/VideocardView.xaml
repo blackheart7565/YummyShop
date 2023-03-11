@@ -47,6 +47,7 @@
                  ItemsSource="{Binding Path=VideocardsCollectionDB,UpdateSourceTrigger=PropertyChanged}"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  ScrollViewer.VerticalScrollBarVisibility="Auto">
+
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal"
@@ -55,19 +56,16 @@
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid Name="GridName"
-                          Width="130">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseDoubleClick">
-                                <i:InvokeCommandAction Command="{Binding DoubleClockToShowWindowDetalisCommand}"
-                                                       CommandParameter="{Binding ElementName=PageVideocarName}"/>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
+                    <Grid x:Name="GridName"
+                          Width="130"
+                          Background="Transparent"
+                          MouseDown="GridName_MouseDown">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="100" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
+
                         <Image Grid.Row="0"
                                Source="{Binding Path= Image, UpdateSourceTrigger=PropertyChanged}"
                                Height="100"

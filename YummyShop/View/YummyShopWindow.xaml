@@ -69,9 +69,9 @@
                TargetType="{x:Type MenuItem}">
             <Setter Property="Foreground"
                     Value="{StaticResource ColorBrush86}" />
-            <Setter Property="FontSize" 
+            <Setter Property="FontSize"
                     Value="12" />
-            <Setter Property="FontWeight" 
+            <Setter Property="FontWeight"
                     Value="Medium" />
         </Style>
         <Style x:Key="textBlockMenuItemStyles"
@@ -98,13 +98,6 @@
         <viewModel:YummyShopWindowViewModel />
     </Window.DataContext>
 
-    <bh:Interaction.Triggers>
-        <bh:EventTrigger EventName="MouseLeftButtonDown">
-            <bh:InvokeCommandAction Command="{Binding MoveWindowShopCommand}"
-                                    CommandParameter="{Binding ElementName=YummyShopWindowName}" />
-        </bh:EventTrigger>
-    </bh:Interaction.Triggers>
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
@@ -120,6 +113,17 @@
                 <ColumnDefinition Width="40" />
                 <ColumnDefinition Width="40" />
             </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0"
+                        x:Name="StackPanelName"
+                        Background="Transparent">
+                <bh:Interaction.Triggers>
+                    <bh:EventTrigger EventName="MouseLeftButtonDown">
+                        <bh:InvokeCommandAction Command="{Binding MoveWindowShopCommand}"
+                                                CommandParameter="{Binding ElementName=YummyShopWindowName}"/>
+                    </bh:EventTrigger>
+                </bh:Interaction.Triggers>
+            </StackPanel>
+
             <Button Grid.Column="1"
                     Style="{StaticResource ButtonWinbdowTollBarStyles}"
                     Command="{Binding ButtonMinimizateWindowShopCommand}"
@@ -175,29 +179,29 @@
                               Foreground="{StaticResource GradientBrush1}"
                               VerticalContentAlignment="Center"
                               HorizontalContentAlignment="Center">
-                                <TextBlock Text="Комплектующие"
-                                           Style="{StaticResource textBlockMenuItemStyles}" />
-                                <Separator />
-                                <MenuItem Header="Видеокарты"
-                                          Style="{StaticResource menuItemStyles}"
-                                          Command="{Binding ButtonShowPageVideocardCatalogCommand}"
-                                          CommandParameter="{Binding ElementName=YummyShopWindowName}" />
-                                <MenuItem Header="SSD"
-                                          Style="{StaticResource menuItemStyles}" />
-                                <MenuItem Header="Процессоры"
-                                          Style="{StaticResource menuItemStyles}" />
-                                <MenuItem Header="Материнские платы"
-                                          Style="{StaticResource menuItemStyles}" />
-                                <MenuItem Header="Блоки питания"
-                                          Style="{StaticResource menuItemStyles}" />
-                                <MenuItem Header="Корпуса"
-                                          Style="{StaticResource menuItemStyles}" />
-                                <MenuItem Header="Жесткие диски и дисковые массивы"
-                                          Style="{StaticResource menuItemStyles}" />
-                                <MenuItem Header="Оперативная память"
-                                          Style="{StaticResource menuItemStyles}" />
-                                <MenuItem Header="Системы охлаждения"
-                                          Style="{StaticResource menuItemStyles}" />
+                        <TextBlock Text="Комплектующие"
+                                   Style="{StaticResource textBlockMenuItemStyles}" />
+                        <Separator />
+                        <MenuItem Header="Видеокарты"
+                                  Style="{StaticResource menuItemStyles}"
+                                  Command="{Binding ButtonShowPageVideocardCatalogCommand}"
+                                  CommandParameter="{Binding ElementName=YummyShopWindowName}" />
+                        <MenuItem Header="SSD"
+                                  Style="{StaticResource menuItemStyles}" />
+                        <MenuItem Header="Процессоры"
+                                  Style="{StaticResource menuItemStyles}" />
+                        <MenuItem Header="Материнские платы"
+                                  Style="{StaticResource menuItemStyles}" />
+                        <MenuItem Header="Блоки питания"
+                                  Style="{StaticResource menuItemStyles}" />
+                        <MenuItem Header="Корпуса"
+                                  Style="{StaticResource menuItemStyles}" />
+                        <MenuItem Header="Жесткие диски и дисковые массивы"
+                                  Style="{StaticResource menuItemStyles}" />
+                        <MenuItem Header="Оперативная память"
+                                  Style="{StaticResource menuItemStyles}" />
+                        <MenuItem Header="Системы охлаждения"
+                                  Style="{StaticResource menuItemStyles}" />
                     </MenuItem>
                 </Menu>
 
@@ -233,7 +237,7 @@
         </Grid>
 
         <Grid Grid.Row="2">
-            <Frame Name="ShopFramePage" />
+            <Frame x:Name="ShopFramePage" />
         </Grid>
 
     </Grid>
